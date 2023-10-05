@@ -43,3 +43,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 If your reproduction needs to be deployed, the easiest way is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Reproduction steps 
+- npm install
+- npm run build
+- `MY_ENV=custom npm run start`
+  - Navigate to http://localhost:7000/
+  - Notice page shows the value `custom` - Works as expected
+- Now let's use Docker to test standalone build output.
+- `docker build -t nextjs-docker .`
+- `docker run -e MY_ENV=custom -it -p 7000:7000 nextjs-docker` 
+  - Navigate to http://localhost:7000/
+  - Notice page shows the value `custom`
+  - Works as expected on canary build
