@@ -51,14 +51,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   - Navigate to http://localhost:7000/
   - Notice page shows the value `custom` - Works as expected
 - Now let's use Docker to test standalone build output.
-  - `docker build -t nextjs-docker .`
-  - `docker run -e MY_ENV=custom -it -p 7000:7000 nextjs-docker` 
-    - Navigate to http://localhost:7000/
-    - Notice page shows the value `custom` for `process.env.MY_ENV`
-    - Works as expected on canary build
+
 - Let's test on next 13.4.13
   - `docker build -t nextjs-docker .`
   - `docker run -e MY_ENV=custom -it -p 7000:7000 nextjs-docker` 
     - Navigate to http://localhost:7000/
     - Notice page shows the value `undefined` for `process.env.MY_ENV`
     - BREAKS
+
+- Let's test on canary build
+  - `docker build -t nextjs-docker .`
+  - `docker run -e MY_ENV=custom -it -p 7000:7000 nextjs-docker` 
+    - Navigate to http://localhost:7000/
+    - Notice page shows the value `custom` for `process.env.MY_ENV`
+    - Works as expected on canary build
