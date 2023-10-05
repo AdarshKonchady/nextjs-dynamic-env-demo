@@ -61,6 +61,5 @@ EXPOSE 7000
 ENV PORT 7000
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
-ENV MY_ENV custom
 
 CMD ["node", "server.js"]
